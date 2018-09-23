@@ -53,4 +53,4 @@ Models
   1. Set up models and migrations
   2. Validations to create different usernames
   3. Create admins
-  4.
+  
