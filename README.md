@@ -23,14 +23,15 @@ Things you may want to cover:
 
 * ...
 
-Basically, the app allows people to 
-
-
+Basically, the app allows people to rent electric cars.
 
 Models
 
   User
-    -name, password/password_digest
+    -name
+    -email
+    -password/password_digest
+    -admin
 
   Ride or Appointment
     -start_date-time
@@ -39,9 +40,17 @@ Models
     -car_id
 
   Car - first would be the car and then you could keep adding stuff
-    -year
-    -company name
+    -manufacturer
     -model
+    -top speed
+    -range
+    -charge_time
     -price per day
 
   Authentication
+    -most likely going to use github
+
+  1. Set up models and migrations
+  2. Validations to create different usernames
+  3. Create admins
+  4.
