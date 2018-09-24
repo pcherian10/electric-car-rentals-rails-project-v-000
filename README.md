@@ -47,10 +47,12 @@ Models
     -charge_time
     -price per day
 
-  Authentication
-    -most likely going to use github
-
-  1. Set up models and migrations
   2. Validations to create different usernames
   3. Create admins
-  
+  4. Create and plan out routes
+    - where should the nested routes go?
+    - there's users, bookings and cars ... in rails amusement park there were no nested routes
+  5. Need to create a sessions controller.
+  6. Create the rails Authentication.
+  7. Views
+  8. Create seed data - look up different cars and specifics
