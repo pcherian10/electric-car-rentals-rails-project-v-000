@@ -47,12 +47,23 @@ Models
     -charge_time
     -price per day
 
-  2. Validations to create different usernames
+
+  1. Add session routes
+    - sign up and sign in
+      -signup goes to users/new
+      -signin goes to username/password route
+        - add password confirmation field?
+  2. Validations for all models
+    - incorporate errors in views.
   3. Create admins
   4. Create and plan out routes
     - where should the nested routes go?
     - there's users, bookings and cars ... in rails amusement park there were no nested routes
+    - Need to create booking forms
   5. Need to create a sessions controller.
-  6. Create the rails Authentication.
+  6. Create the rails Authentication
   7. Views
   8. Create seed data - look up different cars and specifics
+  9. Make html and front end view prettier
+  10. Add ActiveRecord SQL functions - use for sorting data ... lowest price, charge time, highest speed etc.
+  

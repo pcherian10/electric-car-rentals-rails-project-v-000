@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2018_09_23_211032) do
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "user_id"
     t.integer "car_id"
     t.datetime "created_at", null: false

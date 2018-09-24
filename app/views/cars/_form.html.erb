@@ -1,0 +1,36 @@
+<%= form_for (@car) do |f| %>
+
+  <%= f.label :manufacturer, "Manufacturer" %><br>
+  <%= f.text_field :manufacturer %><br>
+
+  <%= f.label :model, "Model" %><br>
+  <%= f.text_field :model %><br>
+
+  <%= f.label :top_speed, "Top Speed in km/h"%><br>
+  <%= f.number_field :top_speed %><br>
+
+  <%= f.label :range, "Range per Charge in km"%><br>
+  <%= f.number_field :range %><br>
+
+  <%= f.label :charge_time, "Charge up time in hours"%><br>
+  <%= f.number_field :charge_time %><br>
+
+  <%= f.label :price_per_day, "Rental Price per Day"%><br>
+  <%= f.number_field :priec_per_day %><br><br>
+
+  <%= f.submit %>
+
+<% end %>
+
+
+
+
+<%#create_table "cars", force: :cascade do |t|
+  t.string "manufacturer"
+  t.string "model"
+  t.integer "top_speed"
+  t.integer "range"
+  t.integer "charge_time"
+  t.integer "price_per_day"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false %>

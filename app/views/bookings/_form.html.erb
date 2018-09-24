@@ -1,0 +1,14 @@
+<% form_for @booking do |f| %>
+
+  <%= f.label :name, "Select your car" %><br>
+    <%= f.collection_select(:name, @cars, :id, :name) %>
+
+  <%= f.label :start_date, "Start Date" %><br>
+  <%= f.date_field :start_date %><br>
+
+  <%= f.label :end_date, "End Date" %><br>
+  <%= f.date_field :end_date %><br>
+
+  <%= f.submit "Create" %>
+
+<% end %>

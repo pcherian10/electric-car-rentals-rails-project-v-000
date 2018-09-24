@@ -1,0 +1,25 @@
+
+<%# will need to show all bookings available to the user
+here.
+
+Check the lab on nested resources to implement %>
+
+<h1>Welcome, <%=@user.name %> !</h1>
+
+<p>Your Current Bookings</p>
+
+<ul>
+
+  <%= @user.bookings.each do |booking| %>
+    <li>
+    <%= booking.car.name %>
+    <%= booking.start_date %>
+    <%= booking.end_date %>
+    </li>
+  <% end %>
+
+</ul>
+
+<%= link_to "Book another car", user_booking_path_new %>
+<%= link_to "Edit an existing booking", user_booking_path(@booking) %>
+<%= link_to "Logout", logout_path %>
