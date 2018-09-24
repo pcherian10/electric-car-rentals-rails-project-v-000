@@ -14,7 +14,7 @@ class CarsController < ApplicationController
 
   def update
       if @car.update(car_params)
-        redirect_to @car, notice "Car details were successfully updated."}
+        redirect_to @car, notice: "Car details were successfully updated."
       else
         render :edit
       end
@@ -30,7 +30,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to cars_url, notice: "Car was successfully deleted."}
+    redirect_to cars_url, notice: "Car was successfully deleted."
   end
 
   private
@@ -41,11 +41,12 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car).permit(
-      :manufacturer,
-      :model,
+      :name
       :top_speed,
       :range,
       :charge_time,
       :price_per_day
     )
+  end
+
 end

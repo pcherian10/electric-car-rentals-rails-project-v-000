@@ -7,6 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+User.create(name: "Paul Cherian", email: "paul.cherian@gmail.com", password: "password" )
+User.create(name: "Melissa Rubes", email: "melissa.rubes@gmail.com", password: "password" )
+User.create(name: "Kaleo Elam", email: "kaleo.elam@gmail.com", password: "password" )
+
+
+Car.create(name:"BMW Brilliance Zinoro 1E", top_speed: 130, range: 150, charge_time: 4, price_per_day: 150)
+Car.create(name:"Tesla Model X", top_speed: 210, range: 350, charge_time: 8, price_per_day: 200)
+Car.create(name:"Tesla Model S", top_speed: 210, range: 320, charge_time: 8, price_per_day: 215)
+Car.create(name:"Tesla Model 3", top_speed: 210, range: 350, charge_time: 7, price_per_day: 195)
+
 =begin
 
 :user_keys =>

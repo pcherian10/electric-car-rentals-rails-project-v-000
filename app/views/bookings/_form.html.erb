@@ -1,7 +1,7 @@
 <% form_for @booking do |f| %>
 
-  <%= f.label :name, "Select your car" %><br>
-    <%= f.collection_select(:name, @cars, :id, :name) %>
+  <%= f.label :manufacturer, "Select the Car Manufacturer" %><br>
+    <%= f.collection_select(:manufacturer, @cars, :id, :manufacturer) %>
 
   <%= f.label :start_date, "Start Date" %><br>
   <%= f.date_field :start_date %><br>

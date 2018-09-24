@@ -1,10 +1,7 @@
 <%= form_for (@car) do |f| %>
 
-  <%= f.label :manufacturer, "Manufacturer" %><br>
-  <%= f.text_field :manufacturer %><br>
-
-  <%= f.label :model, "Model" %><br>
-  <%= f.text_field :model %><br>
+  <%= f.label :name, "Name" %><br>
+  <%= f.text_field :name %><br>
 
   <%= f.label :top_speed, "Top Speed in km/h"%><br>
   <%= f.number_field :top_speed %><br>
@@ -16,7 +13,7 @@
   <%= f.number_field :charge_time %><br>
 
   <%= f.label :price_per_day, "Rental Price per Day"%><br>
-  <%= f.number_field :priec_per_day %><br><br>
+  <%= f.number_field :price_per_day %><br><br>
 
   <%= f.submit %>
 

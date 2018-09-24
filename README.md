@@ -66,4 +66,5 @@ Models
   8. Create seed data - look up different cars and specifics
   9. Make html and front end view prettier
   10. Add ActiveRecord SQL functions - use for sorting data ... lowest price, charge time, highest speed etc.
-  
+
+  Added forms for adding cars, users and creating bookings. Updated car controller fully. Adjusted booking params to accommodate date field instead of datetime. Added b-crypt and has_secure_password. Booking form is updated with car collection. Created initial seed list, working on how to populate objects so that I can run rake db: seed. Thinking about how to create booking properly with the additional attributes of car_id and user_id.
