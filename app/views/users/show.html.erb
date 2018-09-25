@@ -20,7 +20,18 @@ Check the lab on nested resources to implement %>
   <p><strong>Contact Email: </strong><%= @user.email %>
   <br>
   <br>
-  <h4><%= link_to 'Book a car now!', cars_path %></h4>
+  <% if !@user.bookings.empty? %>
+    <ul>
+      <%= @user.bookings.each do |booking| %>
+        <li>
+        <%= link_to "#{booking.car.name} from #{booking.start_date} to #{booking.end_date}", user_booking_path(@user, booking) %>
+      </li>
+    <% end %>
+    </ul><br>
+    <h4><%= link_to 'Book another car now!', cars_path %></h4>
+  <% else %>
+    <h4><%= link_to 'Book your first car now!', cars_path %></h4>
+  <% end %>
   <br>
   <br>
   <p><%= link_to 'Edit Contact Details', edit_user_path(@user) %></p>

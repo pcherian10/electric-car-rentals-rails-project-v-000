@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   post "/bookings/new", to: "bookings#new"
   resources :cars
   resources :users
+
+  resources :users, only: [:show] do
+   resources :bookings, only: [:index, :show]
+ end
+
+
 end
