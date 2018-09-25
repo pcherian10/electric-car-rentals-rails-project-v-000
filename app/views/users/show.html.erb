@@ -21,8 +21,9 @@ Check the lab on nested resources to implement %>
   <br>
   <br>
   <% if !@user.bookings.empty? %>
+    <h4>Current Bookings</h4>
     <ul>
-      <%= @user.bookings.each do |booking| %>
+      <% @user.bookings.each do |booking| %>
         <li>
         <%= link_to "#{booking.car.name} from #{booking.start_date} to #{booking.end_date}", user_booking_path(@user, booking) %>
       </li>

@@ -23,7 +23,6 @@ Models
     -charge_time
     -price per day
 
-
   1. Add session routes
     - sign up and sign in
       -signup goes to users/new
@@ -53,6 +52,10 @@ Models
     - Highest car
 
   -Add a nice html web template.
+
+  -Make sure that I can't access another users bookings by changing route numbers
+
+  
 
 
 
