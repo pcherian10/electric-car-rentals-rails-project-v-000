@@ -41,7 +41,7 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car).permit(
-      :name
+      :name,
       :top_speed,
       :range,
       :charge_time,

@@ -3,23 +3,25 @@
 here.
 
 Check the lab on nested resources to implement %>
+<!--
+<p id="notice"><%= notice %></p>
 
-<h1>Welcome, <%=@user.name %> !</h1>
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
 
-<p>Your Current Bookings</p>
-
-<ul>
-
-  <%= @user.bookings.each do |booking| %>
-    <li>
-    <%= booking.car.name %>
-    <%= booking.start_date %>
-    <%= booking.end_date %>
-    </li>
+-->
+<h1>Welcome, <%= @user.name %>!</h1>
+  <% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
   <% end %>
-
-</ul>
-
-<%= link_to "Book another car", user_booking_path_new %>
-<%= link_to "Edit an existing booking", user_booking_path(@booking) %>
-<%= link_to "Logout", logout_path %>
+  <p><strong>Contact Email: </strong><%= @user.email %>
+  <br>
+  <br>
+  <h4><%= link_to 'Book a car now!', cars_path %></h4>
+  <br>
+  <br>
+  <p><%= link_to 'Edit Contact Details', edit_user_path(@user) %></p>
+  <p><%= link_to 'Log Out', "/logout" %></p>
