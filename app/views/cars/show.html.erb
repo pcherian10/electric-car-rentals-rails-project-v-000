@@ -1,0 +1,22 @@
+
+    <p><strong>Name:</strong> <%= @car.name %></p>
+    <p><strong>Top Speed</strong> <%= @car.top_speed %> km/hr </p>
+    <p><strong>Range:</strong> <%= @car.range %> km</p>
+    <p><strong>Charge Time:</strong> <%= @car.charge_time %> hours</p>
+    <p><strong>Price (per Day):</strong>$ <%= @car.price_per_day %> </p>
+
+    <% if current_user.admin %>
+          <%= link_to 'Edit Car Details', [:edit, @car] %></p>
+    <% else %>
+      <form action="/bookings/new" method="post">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <%= tag(:input, :type => "date", :name => :start_date, :value => date_field) %>
+        <%= tag(:input, :type => "date", :name => :end_date, :value => date_field) %>
+        <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+        <%= tag(:input, :type => "hidden", :name => :car_id, :value => @car.id) %>
+        <input class="btn btn-light" type="submit" value="Book now!">
+      </form>
+    <% end %>
+    <%= link_to 'Back', cars_path, class: "btn btn-primary btn-light" %></p>
+  </div>
+</div>
