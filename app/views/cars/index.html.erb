@@ -20,7 +20,7 @@
         <% if current_user.admin %>
           <td><%= link_to "Show #{car.name}", car_path(car) %></td>
         <% else %>
-          <td><%= link_to "Book #{car.name}", car_path(car) %></td>
+          <td><%= link_to "Book", car_path(car) %></td>
         <% end %>
       </tr>
     <% end %>
