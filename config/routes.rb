@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :users, only: [:show] do
-   resources :bookings, only: [:index, :show]
+   resources :bookings, only: [:index, :show, :edit]
  end
 
 

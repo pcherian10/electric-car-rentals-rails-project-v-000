@@ -51,11 +51,14 @@ Models
     - Fastest Car - highest top speed
     - Highest car
 
-  -Add a nice html web template.
+  -Add a nice html web template / erb file.
 
   -Make sure that I can't access another users bookings by changing route numbers
 
-  
+  -So should I create a separate form for the booking controller? Or shouId I keep the form inside the cars/show function?
+
+  -
+
 
 
 

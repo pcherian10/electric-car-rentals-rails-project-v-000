@@ -7,4 +7,8 @@ class BookingsController < ApplicationController
     redirect_to user_path(@booking.user)
   end
 
+  def edit
+    @user = User.find_by_id(params[:id])
+    @booking = Booking.find_by_id(params[:id])
+  end
 end
