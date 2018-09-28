@@ -1,0 +1,15 @@
+
+<%= form_for @booking, :url => url_for(:controller => 'bookings', :action => 'update') do |f| %>
+
+  <%= f.label :start_date, "Start" %>
+  <%= f.date_field :start_date %>
+
+  <%= f.label :end_date, "End" %>
+  <%= f.date_field :start_date %>
+
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.hidden_field :car_id, :value => @booking.car.id %>
+
+  <%=f.submit "Make Changes" %>
+
+<% end %>
