@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users do
-   resources :bookings, only: [:new, :edit, :update, :create]
+   resources :bookings, only: [:new, :edit, :update, :create, :destroy]
   end
 
   resources :cars

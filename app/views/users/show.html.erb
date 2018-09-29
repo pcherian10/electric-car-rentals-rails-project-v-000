@@ -6,19 +6,26 @@
   <p><strong>Contact Email: </strong><%= @user.email %>
   <br>
   <br>
-  <h4><%= link_to "Book your a car now!", new_user_booking_path({:user_id => @user.id}) %></h4>
-  <% if !@user.bookings.empty? %>
-    <h4>Current Bookings</h4>
-    <ul>
-      <% @user.bookings.each do |booking| %>
-        <li>
-        <%= link_to "#{booking.car.name} from #{booking.start_date} to #{booking.end_date}", [:edit, @user, booking] %>
-      </li>
-    <% end %>
-  </ul><br>
+  <h4><%= link_to "Browse Cars", cars_path(:user_id => @user.id) %></h4>
 
+  <h4><%= link_to "Book your a car now!", new_user_booking_path({:user_id => @user.id}) %></h4>
+
+  <% if !@user.bookings.empty? %>
+      <h4>Current Bookings</h4>
+        <ul>
+          <% @user.bookings.each do |booking| %>
+            <li>
+            <%= link_to "#{booking.car.name} from #{booking.start_date} to #{booking.end_date}", [:edit, @user, booking] %>
+          </li>
+        <% end %>
+      </ul><br>
   <% end %>
+
+
   <br>
   <br>
+
+
   <p><%= link_to 'Edit Contact Details', edit_user_path(@user) %></p>
+
   <p><%= link_to 'Log Out', "/logout" %></p>

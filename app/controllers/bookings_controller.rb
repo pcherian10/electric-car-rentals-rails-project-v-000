@@ -29,6 +29,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to @user
+  end
+
+
   private
 
   def booking_params
