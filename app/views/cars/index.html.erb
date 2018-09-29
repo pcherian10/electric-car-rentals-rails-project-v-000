@@ -20,7 +20,7 @@
         <% if current_user.admin %>
           <td><%= link_to "Show #{car.name}", car_path(car) %></td>
         <% else %>
-          <td><%= link_to "Book", car_path(car) %></td>
+          <td><%= link_to "View Details", car_path(car) %></td>
         <% end %>
       </tr>
     <% end %>
@@ -29,6 +29,3 @@
 <br>
 
 <%= link_to "Back to profile", @user, {:class => "btn btn-primary"} %>
-<br>
-<br>
-<%= link_to 'New Car', new_car_path %></p>

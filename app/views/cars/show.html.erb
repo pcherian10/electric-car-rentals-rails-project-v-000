@@ -5,4 +5,4 @@
 <p><strong>Charge Time:</strong> <%= @car.charge_time %> hours</p>
 <p><strong>Price (per Day): </strong>$ <%= @car.price_per_day %> </p>
 
-<p><%= link_to 'Back', cars_path, class: "btn btn-primary btn-light" %></p>
+<p><%= link_to 'Back', cars_path(:user_id => @user.id), class: "btn btn-primary btn-light" %></p>

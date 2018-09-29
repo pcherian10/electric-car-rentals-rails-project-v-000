@@ -8,7 +8,7 @@
   <br>
   <h4><%= link_to "Browse Cars", cars_path(:user_id => @user.id) %></h4>
 
-  <h4><%= link_to "Book your a car now!", new_user_booking_path({:user_id => @user.id}) %></h4>
+  <h4><%= link_to "Book your car now!", new_user_booking_path({:user_id => @user.id}) %></h4>
 
   <% if !@user.bookings.empty? %>
       <h4>Current Bookings</h4>
