@@ -25,10 +25,11 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find_by_id(params[:id])
     @booking.update(booking_params)
-    if @booking.save
+    if @booking.save && @booking.valid_date
       redirect_to user_path(@booking.user)
     else
-      render :edit
+      flash[:message] = "Check your dates and try again!"
+      redirect_to edit_user_booking_path
     end
   end
 

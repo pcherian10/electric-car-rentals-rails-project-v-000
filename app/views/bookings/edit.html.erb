@@ -3,6 +3,8 @@
 
 <h3><%=@booking.car.name%> from <%= @booking.start_date %> to <%= @booking.end_date %> </h3>
 
+<%=flash[:message]%></br><br>
+
 <%= form_for @booking, :url => url_for(:controller => "bookings", :action => "update") do |f| %>
 
   <%= f.label :start_date, "Start" %>
