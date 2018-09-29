@@ -7,10 +7,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    if @booking.save
+    @user = @booking.user
+    if @booking.valid_date
+      @booking.save
       redirect_to user_path(@booking.user)
     else
-      render :new
+      flash[:message] = "Check your dates and try again!"
+      redirect_to new_user_booking_path
     end
   end
 

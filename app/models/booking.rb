@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
 
 
   def valid_date
-    self.start_date > self.end_date
+    self.start_date < self.end_date
   end
 
 

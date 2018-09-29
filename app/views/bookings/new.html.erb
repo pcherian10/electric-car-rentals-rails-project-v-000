@@ -1,6 +1,8 @@
 
 <h1>Create a New Booking</h1>
 
+<%=flash[:message]%></br><br>
+
 <%= form_for [@user,@booking] do |f| %>
 
   <%= f.collection_select :car_id, Car.all, :id, :name %><br><br>

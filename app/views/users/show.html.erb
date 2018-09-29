@@ -1,8 +1,5 @@
 
 <h1>Welcome, <%= @user.name %>!</h1>
-  <% if @user.admin %>
-    <p><strong>ADMIN</strong></p>
-  <% end %>
   <p><strong>Contact Email: </strong><%= @user.email %>
   <br>
   <br>
@@ -21,10 +18,8 @@
       </ul><br>
   <% end %>
 
-
   <br>
   <br>
-
 
   <p><%= link_to 'Edit Contact Details', edit_user_path(@user) %></p>
 
