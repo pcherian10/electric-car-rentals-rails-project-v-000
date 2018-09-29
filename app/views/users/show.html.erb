@@ -6,6 +6,7 @@
   <p><strong>Contact Email: </strong><%= @user.email %>
   <br>
   <br>
+  <h4><%= link_to "Book your a car now!", new_user_booking_path({:user_id => @user.id}) %></h4>
   <% if !@user.bookings.empty? %>
     <h4>Current Bookings</h4>
     <ul>
@@ -14,10 +15,8 @@
         <%= link_to "#{booking.car.name} from #{booking.start_date} to #{booking.end_date}", [:edit, @user, booking] %>
       </li>
     <% end %>
-    </ul><br>
-    <h4><%= link_to 'Book another car now!', cars_path %></h4>
-  <% else %>
-    <h4><%= link_to 'Book your first car now!', cars_path %></h4>
+  </ul><br>
+
   <% end %>
   <br>
   <br>

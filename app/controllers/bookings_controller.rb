@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   def new
+    @user = User.find(params[:user_id])
     @booking = Booking.new
   end
 
@@ -9,7 +10,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to user_path(@booking.user)
     else
-      redirect_to new_booking_path
+      render :new
     end
   end
 
@@ -19,8 +20,8 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find_by_id(params[:id])
     @booking.update(booking_params)
-    binding.pry
     if @booking.save
       redirect_to user_path(@booking.user)
     else

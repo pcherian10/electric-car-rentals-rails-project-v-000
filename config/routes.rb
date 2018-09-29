@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   delete "/sessions/destroy", to: "sessions#destroy"
 
+
   resources :users do
-   resources :bookings, only: [:new, :edit]
+   resources :bookings, only: [:new, :edit, :update, :create]
   end
 
   resources :cars
-  
+
 end
