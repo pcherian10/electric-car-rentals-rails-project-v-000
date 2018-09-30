@@ -1,28 +1,4 @@
 
-Basically, the app allows people to rent electric cars.
-
-Models
-
-  User
-    -name
-    -email
-    -password/password_digest
-    -admin
-
-  Ride or Appointment
-    -start_date-time
-    -end_date_time
-    -user_id
-    -car_id
-
-  Car - first would be the car and then you could keep adding stuff
-    -manufacturer
-    -model
-    -top speed
-    -range
-    -charge_time
-    -price per day
-
   1. Add session routes
     - sign up and sign in
       -signup goes to users/new
@@ -31,7 +7,6 @@ Models
   2. Validations for all models
     - incorporate errors in views.
   3. Create admins
-  4. Create and plan out routes
   5. Need to create a sessions controller.
   6. Create the rails Authentication
   9. Make html and front end view prettier
@@ -54,9 +29,6 @@ Models
   -Add a nice html web template / erb file.
 
   -Will now add delete functions in file.
-
-
-
 
 
   # README
@@ -83,3 +55,6 @@ Models
   * Deployment instructions
 
   * ...
+
+Client ID
+123557327753-tatmq47mn8s092b4sllsjg55l01j1cvr.apps.googleusercontent.com
