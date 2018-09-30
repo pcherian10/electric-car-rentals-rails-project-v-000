@@ -7,9 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(name: "Paul Cherian", email: "paul.cherian@gmail.com", password: "password" )
-User.create(name: "Melissa Rubes", email: "melissa.rubes@gmail.com", password: "password" )
-User.create(name: "Kaleo Elam", email: "kaleo.elam@gmail.com", password: "password" )
 
 
 Car.create(name:"BMW Brilliance Zinoro 1E", top_speed: 130, range: 150, charge_time: 4, price_per_day: 150)
