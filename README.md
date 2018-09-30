@@ -1,60 +1,24 @@
+# Electric Car Rental Service
+  This is an app for an electric car rental business.
 
-  1. Add session routes
-    - sign up and sign in
-      -signup goes to users/new
-      -signin goes to username/password route
-        - add password confirmation field?
-  2. Validations for all models
-    - incorporate errors in views.
-  3. Create admins
-  5. Need to create a sessions controller.
-  6. Create the rails Authentication
-  9. Make html and front end view prettier
-  10. Add ActiveRecord SQL functions - use for sorting data ... lowest price, charge time, highest speed etc.
+# Deployment
+  To start, run bundle install. Then, run migrations using rake db:migrate. Start your rails server, head to localhost:3000 in browser and the app should've started!
 
-  Added forms for adding cars, users and creating bookings. Updated car controller fully. Adjusted booking params to accommodate date field instead of datetime. Added b-crypt and has_secure_password. Booking form is updated with car collection. Created initial seed list, working on how to populate objects so that I can run rake db: seed. Thinking about how to create booking properly with the additional attributes of car_id and user_id.
+# Basic Build Versions
+  Ruby 2.3.3
+  Rails 5.2.1
 
-  - A checkout page
-    -with the a simple total displayed.
-    -a function in the booking model that calculates the total based on number of days and price per days
+# Authentication
+  This app uses Google's Authentication strategy.
 
-  -Validations
-    -ensures that the same car is not available for multiple bookings at the same time. Most likely a booking function
-
-  -Car data sorting
-    - Car with highest range.
-    - Fastest Car - highest top speed
-    - Highest car
-
-  -Add a nice html web template / erb file.
-
-  -Will now add delete functions in file.
-
-
-  # README
-
-  This README would normally document whatever steps are necessary to get the
-  application up and running.
-
-  Things you may want to cover:
-
-  * Ruby version
-
-  * System dependencies
-
-  * Configuration
-
-  * Database creation
-
-  * Database initialization
-
-  * How to run the test suite
-
-  * Services (job queues, cache servers, search engines, etc.)
-
-  * Deployment instructions
-
-  * ...
-
-Client ID
-123557327753-tatmq47mn8s092b4sllsjg55l01j1cvr.apps.googleusercontent.com
+# Features TO-DO List  
+  [x] Google Authentication
+  [ ] Log in / Sign Up via regular password
+  [ ] Scope method
+  [ ] ActiveRecord Functions (cars can be sorted by highest range, top_speed etc.)
+  [ ] Some basic validations for username
+  [ ] Logic and validations to check to see if the same car cannot be used by multiple users during same time.
+  [ ] Fields with errors
+  [ ] HTML front? (boostrap? ... make prettier with ERB?)
+  [ ] Checkout page ?
+  [ ] Related Blogpost
