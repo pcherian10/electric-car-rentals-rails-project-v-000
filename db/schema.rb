@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_211032) do
+ActiveRecord::Schema.define(version: 2018_09_30_155432) do
 
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2018_09_23_211032) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
   end
 
 end
