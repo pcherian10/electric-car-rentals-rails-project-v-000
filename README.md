@@ -13,7 +13,7 @@
 
 # Features TO-DO List  
   [x] Google Authentication
-  [ ] Log in / Sign Up via regular password
+  [x] Log in / Sign Up via regular password
   [ ] Scope method
   [ ] ActiveRecord Functions (cars can be sorted by highest range, top_speed etc.)
   [ ] Some basic validations for username
