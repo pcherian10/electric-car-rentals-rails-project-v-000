@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_160920) do
+ActiveRecord::Schema.define(version: 2018_10_01_122302) do
 
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_160920) do
     t.string "uid"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string "password_digest"
   end
 
 end

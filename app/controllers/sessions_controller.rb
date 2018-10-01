@@ -5,9 +5,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_to user_path(id: user.id)
+    if auth
+      user = User.from_omniauth(request.env["omniauth.auth"])
+      session[:user_id] = user.id
+      redirect_to user_path(id: user.id)
+    else
+      @user = User.find_by(name: params[:user][:name])
+       if @user && @user.authenticate(params[:user][:password])
+          session[:user_id] = @user.id
+          redirect_to user_path(@user), notice: "Welcome to E-Cars Rentals!"
+       else
+          flash[:notice] = "Incorrect username and/or password combination."
+          redirect_to signin_path
+       end
+    end
   end
 
   def destroy
