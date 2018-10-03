@@ -3,29 +3,34 @@
 <table class="table">
   <thead>
     <tr>
-      <th colspan="2"></th>
+      <th colspan="7"></th>
     </tr>
   </thead>
-
   <tbody>
     <tr>
-      <td><strong>Name</strong></td>
-      <td><strong>Price</strong></td>
+      <td><strong>Name  </strong></td>
+      <td><strong>Price (per Day)  </strong></td>
+      <td><strong>Top Speed (km/hr)  </strong></td>
+      <td><strong>Range (km)  </strong></td>
+      <td><strong>Charge Time (hrs)  </strong></td>
     </tr>
     <% @cars.each do |car| %>
       <tr>
-
         <td><%= car.name %></td>
-        <td>$<%= car.price_per_day %> / day</td>
-        <% if current_user.admin %>
-          <td><%= link_to "Show #{car.name}", car_path(car) %></td>
-        <% else %>
-          <td><%= link_to "View Details", car_path(car) %></td>
-        <% end %>
+        <td align="center">$<%= car.price_per_day %></td>
+        <td align="center"><%= car.top_speed %></td>
+        <td align="center"><%= car.range %></td>
+        <td align="center"><%= car.charge_time %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<td><%= link_to "Book your car!", new_user_booking_path(@user, @booking) %></td>
+
+<br>
 <br>
 
 <%= link_to "Back to profile", @user, {:class => "btn btn-primary"} %>

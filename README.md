@@ -12,13 +12,14 @@
   This app uses Google's Authentication strategy.
 
 # Features TO-DO List  
-  [x] Google Authentication
-  [x] Log in / Sign Up via regular password
+  [X] Google Authentication
+  [X] Log in / Sign Up via regular password
+  [X] Logic and validations to check to see if the same car cannot be used by multiple users during same time.
   [ ] Scope method
   [ ] ActiveRecord Functions (cars can be sorted by highest range, top_speed etc.)
   [ ] Some basic validations for username
-  [ ] Logic and validations to check to see if the same car cannot be used by multiple users during same time.
   [ ] Fields with errors
-  [ ] HTML front? (boostrap? ... make prettier with ERB?)
+  [ ] HTML front? (boostrap? ... make prettier with .erb?)
+  [ ] Admin?
   [ ] Checkout page ?
   [ ] Related Blogpost

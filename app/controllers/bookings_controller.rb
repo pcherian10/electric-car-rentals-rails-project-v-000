@@ -7,12 +7,15 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @user = @booking.user
-    if @booking.valid_date
+    if @booking.valid? && @booking.valid_date && @booking.duplicate_booking != true
       @booking.save
       redirect_to user_path(@booking.user)
     else
-      flash[:message] = "Check your dates and try again!"
+      if !@booking.valid_date
+        flash[:message] = "Check your dates and try again!"
+      elsif @booking.duplicate_booking
+        flash[:message] = @booking.return_available_dates
+      end
       redirect_to new_user_booking_path
     end
   end
@@ -24,11 +27,16 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find_by_id(params[:id])
-    @booking.update(booking_params)
-    if @booking.save && @booking.valid_date
-      redirect_to user_path(@booking.user)
+    @booking.assign_attributes(booking_params)
+    if @booking.valid_date && @booking.duplicate_booking != true
+        @booking.save(booking_params)
+        redirect_to user_path(@booking.user)
     else
-      flash[:message] = "Check your dates and try again!"
+      if !@booking.valid_date
+        flash[:message] = "Check your dates and try again!"
+      elsif @booking.duplicate_booking
+        flash[:message] = @booking.return_available_dates
+      end
       redirect_to edit_user_booking_path
     end
   end
