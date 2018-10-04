@@ -8,19 +8,21 @@
   </thead>
   <tbody>
     <tr>
-      <td><strong>Name  </strong></td>
-      <td><strong>Price (per Day)  </strong></td>
-      <td><strong>Top Speed (km/hr)  </strong></td>
-      <td><strong>Range (km)  </strong></td>
-      <td><strong>Charge Time (hrs)  </strong></td>
+      <th align = "left"><%= sort_link "name" %></th> <!-- this will be where the sort-links will be-->
+      <th><%= sort_link "price_per_day" %></th>
+      <th><%= sort_link "top_speed" %></th>
+      <th><%= sort_link "range" %></th>
+      <th><%= sort_link "charge_time" %></th>
+      <th><%= sort_link ""%> </th>
     </tr>
     <% @cars.each do |car| %>
       <tr>
-        <td><%= car.name %></td>
+        <td><%= car.name %>
         <td align="center">$<%= car.price_per_day %></td>
         <td align="center"><%= car.top_speed %></td>
         <td align="center"><%= car.range %></td>
         <td align="center"><%= car.charge_time %></td>
+        <td align="center"><%= link_to "Book", new_user_booking_path(:user_id => session[:user_id], :car_id => car.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,9 +30,9 @@
 
 <br>
 
-<td><%= link_to "Book your car!", new_user_booking_path(@user, @booking) %></td>
+<%#<td><%= link_to "Book your car!", new_user_booking_path(@user, @booking) %></td>
 
 <br>
 <br>
 
-<%= link_to "Back to profile", @user, {:class => "btn btn-primary"} %>
+<%#<!--<%= link_to "Back to profile", @user, {:class => "btn btn-primary"} %>

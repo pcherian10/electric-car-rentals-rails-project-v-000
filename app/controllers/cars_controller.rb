@@ -1,7 +1,8 @@
 class CarsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @cars = Car.all
+    @cars = Car.order("#{sort_column} #{sort_direction}")
     @user = User.find_by_id(params[:user_id])
   end
 
@@ -50,6 +51,18 @@ class CarsController < ApplicationController
       :charge_time,
       :price_per_day
     )
+  end
+
+  def sortable_columns
+    ["name", "top_speed", "range", "charge_time", "price_per_day"]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end

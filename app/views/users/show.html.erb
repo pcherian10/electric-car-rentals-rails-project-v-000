@@ -1,13 +1,10 @@
 
 <h1>Welcome!</h1>
-  <p><strong>Contact Email: </strong><%= @user.email %>
-  <br>
-  <br>
+
   <h4><%= link_to "Browse Cars", cars_path(:user_id => @user.id) %></h4>
-
-  <h4><%= link_to "Book your car now!", new_user_booking_path({:user_id => @user.id}) %></h4>
-
-  <% if !@user.bookings.empty? %>
+  <% if @user.bookings.empty? %>
+     <p>You do not have any bookings! Browse and book above! </p>
+  <% elsif @user.bookings %>
       <h4>Current Bookings</h4>
         <ul>
           <% @user.bookings.each do |booking| %>
@@ -17,10 +14,3 @@
         <% end %>
       </ul><br>
   <% end %>
-
-  <br>
-  <br>
-
-  <p><%= link_to 'Edit Contact Details', edit_user_path(@user) %></p>
-
-  <p><%= link_to 'Log Out', "/signout" %></p>
