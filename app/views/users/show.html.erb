@@ -5,7 +5,7 @@
   <% @user = User.find_by_id(session[:user_id]) %>
   <% if @user.bookings.empty? %>
      <p>You do not have any bookings! Browse and book above! </p>
-  <% elsif @user.bookings %>
+  <% elsif @user.bookings%>
       <h4>Current Bookings</h4>
         <ul>
           <% @user.bookings.each do |booking| %>
