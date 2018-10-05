@@ -1,0 +1,38 @@
+<h1>Editing car</h1>
+
+<br>
+<%= form_for @car, :url => {:controller => "admin/cars", :action => "update"} do |f| %>
+
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:
+      </h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name, "Name" %><br>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :top_speed, "Top Speed in km/h"%><br>
+  <%= f.text_field :top_speed %><br><br>
+
+  <%= f.label :range, "Range per Charge in km"%><br>
+  <%= f.text_field :range %><br><br>
+
+  <%= f.label :charge_time, "Charge up time in hours"%><br>
+  <%= f.text_field :charge_time %><br><br>
+
+  <%= f.label :price_per_day, "Rental Price per Day"%><br>
+  <%= f.text_field :price_per_day %><br><br>
+
+  <%= f.submit %>
+
+
+<% end %>

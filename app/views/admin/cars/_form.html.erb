@@ -1,5 +1,5 @@
 <br>
-<%= form_for @car do |f| %>
+<%= form_for @car, :url => {:controller => "admin/cars", :action => "create"} do |f| %>
 
   <% if @car.errors.any? %>
     <div id="error_explanation">
@@ -31,5 +31,6 @@
   <%= f.text_field :price_per_day %><br><br>
 
   <%= f.submit %>
+
 
 <% end %>

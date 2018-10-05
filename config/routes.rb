@@ -14,10 +14,11 @@ Rails.application.routes.draw do
    resources :bookings, only: [:new, :edit, :update, :create, :destroy]
   end
 
-  resources :cars
+  resources :cars, only: [:index]
 
   namespace :admin do
     resources :bookings, :only => [:index, :show]
+    resources :cars, only: [:new, :create, :edit, :update, :destroy, :show, :index]
   end
 
   root 'static_pages#home'
