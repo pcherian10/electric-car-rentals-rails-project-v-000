@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   resources :cars
 
+  namespace :admin do
+    resources :bookings, :only => [:index, :show]
+  end
+
   root 'static_pages#home'
 
 end

@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  before_action :set_car, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
   def index
