@@ -2,13 +2,13 @@ class BookingsController < ApplicationController
 
   def new
     @user = User.find_by_id(params[:user_id])
-    @booking = Booking.new
     @car = Car.find_by_id(params[:car_id])
-    
+    @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @car = @booking.car
     if @booking.valid? && @booking.valid_date && @booking.duplicate_booking != true
       @booking.save
       redirect_to user_path(@booking.user)
@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
       elsif @booking.duplicate_booking
         flash[:message] = @booking.return_available_dates
       end
-      redirect_to new_user_booking_path
+      redirect_to new_user_booking_path(:user_id => session[:user_id], :car_id => @car.id)
     end
   end
 

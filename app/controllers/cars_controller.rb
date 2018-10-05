@@ -26,10 +26,14 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    @car.save
-      if @car
-        redirect_to car_path(@car)
-      end
+
+    if @car.valid?
+        @car.save
+        redirect_to car_path(@car.id)
+    else
+      render :new
+    end
+
   end
 
   def destroy

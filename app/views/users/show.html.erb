@@ -1,7 +1,8 @@
 
 <h1>Welcome!</h1>
 
-  <h4><%= link_to "Browse Cars", cars_path(:user_id => @user.id) %></h4>
+  <h4><%= link_to "Browse Cars", cars_path(:user_id => session[:user_id]) %></h4>
+  <% @user = User.find_by_id(session[:user_id]) %>
   <% if @user.bookings.empty? %>
      <p>You do not have any bookings! Browse and book above! </p>
   <% elsif @user.bookings %>

@@ -15,11 +15,11 @@
   [X] Google Authentication
   [X] Log in / Sign Up via regular password
   [X] Logic and validations to check to see if the same car cannot be used by multiple users during same time.
-  [X] Scope method (going to tackle this next!)
-  [ ] Fields with errors
+  [X] Scope method
+  [X] Fields with errors
+  [ ] Admin?
   [ ] ActiveRecord Functions (cars can be sorted by highest range, top_speed etc.)
   [ ] Some basic validations for username
   [ ] HTML front? (boostrap? ... make prettier with .erb?)
-  [ ] Admin?
   [ ] Checkout page ?
   [ ] Related Blogpost

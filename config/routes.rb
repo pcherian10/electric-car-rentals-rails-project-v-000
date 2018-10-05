@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   resources :cars
 
-  root 'user'
+  root 'static_pages#home'
 
 end
