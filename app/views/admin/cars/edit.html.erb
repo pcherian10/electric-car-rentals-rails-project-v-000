@@ -36,3 +36,9 @@
 
 
 <% end %>
+
+<br>
+<br>
+
+<%= link_to 'Delete this car', admin_car_path(@car),
+          data: {:confirm => 'Are you sure?'}, :method => :delete %>

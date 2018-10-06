@@ -1,8 +1,13 @@
 
 <h1>Welcome!</h1>
 
+<% if @user.admin %>
+  <%= link_to "Admin Access", admin_home_index_path(:user_id => session[:user_id]) %>
+<% end %>
+
   <h4><%= link_to "Browse Cars", cars_path(:user_id => session[:user_id]) %></h4>
   <% @user = User.find_by_id(session[:user_id]) %>
+
   <% if @user.bookings.empty? %>
      <p>You do not have any bookings! Browse and book above! </p>
   <% elsif @user.bookings%>

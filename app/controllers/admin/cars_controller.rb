@@ -26,7 +26,7 @@ class Admin::CarsController < ApplicationController
     @car = Car.new(car_params)
     if @car.valid?
         @car.save
-        redirect_to admin_car_path(@car.id)
+        redirect_to admin_cars_path, notice: "Car was successfully added."
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Admin::CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to cars_url, notice: "Car was successfully deleted."
+    redirect_to admin_cars_path, notice: "Car was successfully deleted."
   end
 
   private
