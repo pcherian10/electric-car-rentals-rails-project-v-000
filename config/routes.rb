@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :bookings, :only => [:index, :show]
     resources :cars, only: [:new, :create, :edit, :update, :destroy, :show, :index]
     resources :home, only: [:index]
-    resourees :stats, only: [:show]
+    resources :stats, only: [:index]
   end
 
 

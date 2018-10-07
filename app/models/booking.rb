@@ -27,4 +27,12 @@ class Booking < ApplicationRecord
     end
   end
 
+  def revenue
+    "$" + (( self.end_date - self.start_date ).to_i * self.car.price_per_day).to_s
+  end
+
+
+
+
+
 end

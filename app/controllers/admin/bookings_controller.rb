@@ -9,4 +9,5 @@ class Admin::BookingsController < ApplicationController
     @booking = Booking.find_by_id(params[:id])
   end
 
+
 end

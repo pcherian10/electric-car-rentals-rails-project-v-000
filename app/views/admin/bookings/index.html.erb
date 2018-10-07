@@ -9,19 +9,21 @@
 
     <tr>
       <th align = "left">Name  </th> <!-- this will be where the sort-links will be-->
+      <th align = "center">Admin Privileges </th>
       <th>Start Date  </th>
       <th>End Date  </th>
-      <th> </th>
-
-      <th>Car</th>
+      <th>Car </th>
+      <th>Total Booking Revenue </th>
     </tr>
 
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.user.name %>
+        <td align = "center"><%= booking.user.admin.to_s.titleize %>
         <td><%= booking.start_date %>
         <td><%= booking.end_date %>
         <td><%= booking.car.name %>
+        <td  align = "center" ><%= booking.revenue %>
         <td><%= link_to "Details", admin_booking_path(booking) %>
       </tr>
     <% end %>
