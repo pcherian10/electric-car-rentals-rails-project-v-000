@@ -18,8 +18,8 @@
   [X] Scope method
   [X] Fields with errors
   [X] Some basic validations for username
-  [ ] Admin?
-  [ ] ActiveRecord Functions (cars can be sorted by highest range, top_speed etc.)
+  [X] Admin?
+  [X] ActiveRecord Functions (cars can be sorted by highest range, top_speed etc.)
+  [ ] Related Blogpost
   [ ] HTML front? (boostrap? ... make prettier with .erb?)
   [ ] Checkout page ?
-  [ ] Related Blogpost
