@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'signin', to: 'sessions#new'
+  get 'fastestcar', to: 'cars#fastestcar'
   post '/sessions/create', to: 'session#create'
 
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -14,13 +15,12 @@ Rails.application.routes.draw do
    resources :bookings, only: [:new, :edit, :update, :create, :destroy]
   end
 
-  resources :cars, only: [:index]
+  resources :cars, only: [:index, :fastestcar]
 
   namespace :admin do
     resources :bookings, :only => [:index, :show]
     resources :cars, only: [:new, :create, :edit, :update, :destroy, :show, :index]
     resources :home, only: [:index]
-    resources :stats, only: [:index]
   end
 
 

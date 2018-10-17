@@ -8,4 +8,8 @@ class Car < ApplicationRecord
   validates :charge_time, numericality: true
   validates :price_per_day, numericality: true
 
+  scope :fastestcar, -> {order('top_speed DESC').first.name}
+
+
+
 end
