@@ -2,10 +2,6 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
-  def fastestcar
-    
-  end
-
   def index
     @cars = Car.order("#{sort_column} #{sort_direction}")
     @user = User.find_by_id(params[:user_id])
@@ -14,6 +10,10 @@ class CarsController < ApplicationController
   def show
     @car = Car.find_by_id(params[:id])
     @user = User.find_by_id(params[:user_id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @car.to_json }
+    end
   end
 
 

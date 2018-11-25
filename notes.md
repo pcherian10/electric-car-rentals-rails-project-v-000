@@ -77,6 +77,27 @@ Official JS requirements:
 
     - Serialization
         - Helps convert data to JSON, essentially. Will have to build this into the backend basically.
+          Add this in a route where data is procured to get the object data in JSON format to the front-end.
+        - So what are my current data end points in my application?
+            - cars, which have basic car attributes
+            - bookings, which have a start date and end date
+            - users, which really have username and password.
+
     - Constructor Functions
         - This is analogous to classes in Ruby.
+        - Don't know how this comes into play in the app yet.
+
+
     - Javascript Model Objects
+        - Aren't these just regular objects?
+        - Don't know how this comes into play in the app yet.
+
+    - Handlebars,
+        - When do I use them? This would be for forms/templates. Would it be helpful AJAX front-end stuff?
+
+
+Current To-Do list
+
+  1. Starting with the backend, I want to serialize car and booking data into JSON export. (E)
+      - Run serialize for car and booking.
+  2. Add functions for front-end (need to explore this more.)
