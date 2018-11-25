@@ -15,7 +15,7 @@ Rails.application.routes.draw do
    resources :bookings, only: [:new, :edit, :update, :create, :destroy]
   end
 
-  resources :cars, only: [:index, :fastestcar]
+  resources :cars, only: [:index, :fastestcar, :show]
 
   namespace :admin do
     resources :bookings, :only => [:index, :show]
