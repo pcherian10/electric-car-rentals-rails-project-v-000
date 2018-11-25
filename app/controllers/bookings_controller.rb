@@ -1,5 +1,15 @@
 class BookingsController < ApplicationController
 
+  def show
+    @booking = Booking.find_by_id(params[:id])
+    @user = @booking.user
+    respond_to do |format|
+      format.html { render :show}
+      format.json { render json: @booking.to_json }
+    end
+
+  end
+
   def new
     @user = User.find_by_id(params[:user_id])
     @car = Car.find_by_id(params[:car_id])

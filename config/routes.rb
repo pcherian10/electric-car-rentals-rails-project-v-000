@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
 
   resources :users do
-   resources :bookings, only: [:new, :edit, :update, :create, :destroy]
+   resources :bookings, only: [:new, :edit, :update, :create, :destroy, :show]
   end
 
   resources :cars, only: [:index, :fastestcar, :show]

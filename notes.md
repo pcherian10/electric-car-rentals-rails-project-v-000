@@ -93,7 +93,7 @@ Official JS requirements:
         - Don't know how this comes into play in the app yet.
 
     - Handlebars,
-        - When do I use them? This would be for forms/templates. Would it be helpful AJAX front-end stuff?
+        - When do I use them? This would be for forms/templates. Would it be helpful for AJAX front-end stuff?
 
 
 Current To-Do list
