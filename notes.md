@@ -69,9 +69,7 @@ Official JS requirements:
     - Using JQuery in JS files to more efficiently select Javascript objects.
     - JS
       - functions, the basics of them.
-
     - Gray areas in my brain
-
 
   Things to review:
 
@@ -95,9 +93,29 @@ Official JS requirements:
     - Handlebars,
         - When do I use them? This would be for forms/templates. Would it be helpful for AJAX front-end stuff?
 
-
 Current To-Do list
 
+  The way I'm having success now is by being able to figure out what I want my current program to do and then finding the analogy of said process in the lesson.
+
   1. Starting with the backend, I want to serialize car and booking data into JSON export. (E)
-      - Run serialize for car and booking.
-  2. Add functions for front-end (need to explore this more.)
+      - Run serialize for car and booking. [DONE]
+
+  2. In DIY JSON Serializer, there appear to be analogous logic to consume and build JSON asynchronously (ie. via AJAX).
+      - Tried adding has_many relationship between car and booking so that the car show's up in the booking JSON object, but didn't work. Though this isn't a priority now.
+      - The main goal is to show the index of cars after the user logs in.
+        - Change the current format of users/show page after login?
+          - Going down this road.
+          - Just show a car index under the current users/show page.[DONE]
+          - New Thought:
+            - Make the main page a revolving carousel of all the cars, using the 'Next' and 'Back' buttons on the same page.
+              - We need a car show page that will have to be summoned with each click of the 'Next' or 'Back' button.
+              - Use AJAX to make this happen!
+              - The relevant example is in ActiveModelSerializer Lab.
+
+            -
+
+      - Then each car will have a 'Book Now' and 'Car Details' buttons below a picture that they can do on the same page.
+
+  3. Add functions for front-end (need to explore this more.
+
+  4.

@@ -16,7 +16,6 @@ class CarsController < ApplicationController
     end
   end
 
-
   def new
     @car = Car.new
   end
