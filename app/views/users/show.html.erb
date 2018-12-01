@@ -19,7 +19,15 @@
       </ul><br>
   <% end %>
 
-  <h4>Car List</h4>
+  <div align="center">
+    <h4>Choose from the below cars:</h4>
+    <button class ="inline js-previous" data-id="<%=@car.id%>">Previous</button>
+      <h5 class="inline carName"><%= @car.name %></h5>
+    <button class="inline js-next" data-id="<%=@car.id%>">Next</button>
+  </div>
+
+<% if false %>
+<h4>Car List</h4>
   <table class="table">
     <thead>
       <tr>
@@ -28,7 +36,7 @@
     </thead>
     <tbody>
       <tr>
-        <th align = "left"><%= sort_link "name" %></th> <!-- this will be where the sort-links will be-->
+        <th align = "left"><%= sort_link "name" %></th>
         <th><%= sort_link "price_per_day" %></th>
         <th><%= sort_link "top_speed" %></th>
         <th><%= sort_link "range" %></th>
@@ -47,3 +55,4 @@
       <% end %>
     </tbody>
   </table>
+<% end %>

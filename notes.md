@@ -108,14 +108,15 @@ Current To-Do list
           - Just show a car index under the current users/show page.[DONE]
           - New Thought:
             - Make the main page a revolving carousel of all the cars, using the 'Next' and 'Back' buttons on the same page.
-              - We need a car show page that will have to be summoned with each click of the 'Next' or 'Back' button.
+            - 'Book Now' and 'Car Details' buttons below each Car Picture.
+            - Upon clicking Book Now, should load the booking form right below
+            - Upon clicking Car Details, should load the car details below.
               - Use AJAX to make this happen!
               - The relevant example is in ActiveModelSerializer Lab.
-
-            -
+              -
 
       - Then each car will have a 'Book Now' and 'Car Details' buttons below a picture that they can do on the same page.
 
   3. Add functions for front-end (need to explore this more.
 
-  4.
+  4. Basically, this will end up having only one page. One show page. Now we've to figure out how to input the AJAX.

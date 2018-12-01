@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @car = Car.first
     @cars = Car.order("#{sort_column} #{sort_direction}")
   end
 
