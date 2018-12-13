@@ -5,6 +5,10 @@ class CarsController < ApplicationController
   def index
     @cars = Car.order("#{sort_column} #{sort_direction}")
     @user = User.find_by_id(params[:user_id])
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @cars.to_json }
+    end
   end
 
   def show

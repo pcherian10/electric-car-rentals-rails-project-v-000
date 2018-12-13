@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @car = Car.first
     @cars = Car.order("#{sort_column} #{sort_direction}")
+    respond_to do |f|
+      f.html {render :show }
+      f.json {render json: @user}
+    end
+
   end
 
   def new

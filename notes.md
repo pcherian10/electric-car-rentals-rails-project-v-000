@@ -33,9 +33,6 @@ Must translate the JSON responses into JavaScript Model Objects using either ES6
 
   Borrowing from the blog domain example, instead of plainly taking the JSON response of the newly created comment and appending it to the DOM, you would create a Comment prototype object and add a function to that prototype to perhaps concatenate (format) the comments authors first and last name. You would then use the object to append the comment information to the DOM.
 
-Other:
-  Can't unfortunately find an API that doles out car specs in the format I want. If I do find one that is a) free and b) available to use, then I can always add it in later.
-
 -----
 Official JS requirements:
   - Must have a Rails Backend and new requirements implemented through JavaScript.
@@ -113,7 +110,11 @@ Current To-Do list
             - Upon clicking Car Details, should load the car details below.
               - Use AJAX to make this happen!
               - The relevant example is in ActiveModelSerializer Lab.
-              -
+
+        -
+
+      - The problem I'm having is that I can't pass the form variables for the view to load. I think a potential solution is to bring the backend
+      - Don't have to pass the car variable ... can delete it, which is what I'm doing.
 
       - Then each car will have a 'Book Now' and 'Car Details' buttons below a picture that they can do on the same page.
 

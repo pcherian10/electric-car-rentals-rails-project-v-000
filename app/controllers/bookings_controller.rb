@@ -1,13 +1,19 @@
 class BookingsController < ApplicationController
+  def ajax_booking
+    #render partial: "/bookings/ajaxnew" {loca
+  end
+
+  def index
+    @bookings = Booking.all
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @bookings}
+    end
+  end
 
   def show
     @booking = Booking.find_by_id(params[:id])
     @user = @booking.user
-    respond_to do |format|
-      format.html { render :show}
-      format.json { render json: @booking.to_json }
-    end
-
   end
 
   def new
@@ -21,7 +27,10 @@ class BookingsController < ApplicationController
     @car = @booking.car
     if @booking.valid? && @booking.valid_date && @booking.duplicate_booking != true
       @booking.save
-      redirect_to user_path(@booking.user)
+      respond_to do |f|
+        f.html {redirect_to user_path(@booking.user)}
+        f.json {render :json => @booking.user}
+      end
     else
       if !@booking.valid_date
         flash[:message] = "Check your dates and try again!"

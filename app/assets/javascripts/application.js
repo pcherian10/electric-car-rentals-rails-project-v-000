@@ -17,3 +17,4 @@
 //= require bootstrap
 //= require_tree
 //= require electric-cars
+//= require bookings

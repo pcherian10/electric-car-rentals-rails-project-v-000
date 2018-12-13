@@ -1,11 +1,8 @@
-<h1>Welcome!</h1>
-
-<% if @user.admin %>
-  <%= link_to "Admin Access", admin_home_index_path(:user_id => session[:user_id]) %>
-<% end %>
-
+<h2>Welcome!</h2>
+  <% if @user.admin %>
+    <%= link_to "Admin Access", admin_home_index_path(:user_id => session[:user_id]) %>
+  <% end %>
   <% @user = User.find_by_id(session[:user_id]) %>
-
   <% if @user.bookings.empty? %>
      <p>You do not have any bookings! Browse and book below! </p>
   <% elsif @user.bookings%>
@@ -19,40 +16,8 @@
       </ul><br>
   <% end %>
 
-  <div align="center">
-    <h4>Choose from the below cars:</h4>
-    <button class ="inline js-previous" data-id="<%=@car.id%>">Previous</button>
-      <h5 class="inline carName"><%= @car.name %></h5>
-    <button class="inline js-next" data-id="<%=@car.id%>">Next</button>
-  </div>
 
-<% if false %>
-<h4>Car List</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th colspan="7"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th align = "left"><%= sort_link "name" %></th>
-        <th><%= sort_link "price_per_day" %></th>
-        <th><%= sort_link "top_speed" %></th>
-        <th><%= sort_link "range" %></th>
-        <th><%= sort_link "charge_time" %></th>
-        <th><%= sort_link ""%> </th>
-      </tr>
-      <% @cars.each do |car| %>
-        <tr>
-          <td><%= car.name %>
-          <td align="center">$<%= car.price_per_day %></td>
-          <td align="center"><%= car.top_speed %></td>
-          <td align="center"><%= car.range %></td>
-          <td align="center"><%= car.charge_time %></td>
-          <td align="center"><%= link_to "Book", new_user_booking_path(:user_id => session[:user_id], :car_id => car.id) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+  <h4> Available Cars </h4>
+  <br>
+    <button data-id="<%= Car.first.id %>" id="js-previous"> Previous Car </button>
+    <button data-id="<%= Car.first.id %>" id="js-next"> Next Car </button>
