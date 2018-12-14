@@ -1,20 +1,22 @@
-var nextCounter = 0;
-var previousCounter = 0;
-var nextId = 1;
-var previousId;
+let nextCounter = 0;
+let previousCounter = 0;
+let nextId = 1;
+let previousId;
+let numberOfCars;
+let  = 0
 
 $(() => {
-		listenerNextCarClick()
-		listenerPreviousCarClick()
+		listenerNextCarClick();
+		getCarCount();
 })
-var numberOfCarsObject;
+
 
 function listenerNextCarClick () {
     $("#js-next").on('click', function (event) {
 			event.preventDefault();
 			console.log("nextCounter" + " " +  nextCounter);
 			console.log("nextId" + " " + nextId);
-			if (nextId < 4) {
+			if (nextId < numberOfCars) {
 				if (nextCounter === 0) {
 						nextId = parseInt($("#js-next").attr("data-id")) + 1;
 						nextCounter++
@@ -34,28 +36,18 @@ function listenerNextCarClick () {
 		})
 }
 
+function getCarCount() {
+    $.get('/car_count', function (data) {
+         numberOfCars = data;
+    });
+	}
 
-function listenerPreviousCarClick () {
-    $("#js-previous").on('click', function (event) {
-			event.preventDefault();
-			if (nextCounter === 0) {
-				nextId = parseInt($("#js-next").attr("data-id")) + 1;
-				nextCounter++;
-			}
-			else {
-				nextId += 1;
-				nextCounter++;
-			}
-			$.ajax({
-				method: 'GET',
-				url: `/cars/${nextId}`,
-				dataType: 'json',
-				success: function(response) {
-					console.log(response.name);
-				}
-			})
-		})
-}
+
+
+
+
+
+
 
 
 

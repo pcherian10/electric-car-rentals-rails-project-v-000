@@ -2,6 +2,10 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
+  def car_count
+    render json: Car.count
+  end
+
   def index
     @cars = Car.order("#{sort_column} #{sort_direction}")
     @user = User.find_by_id(params[:user_id])
