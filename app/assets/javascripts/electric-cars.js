@@ -1,12 +1,11 @@
-let nextCounter = 0;
-let previousCounter = 0;
-let nextId = 1;
+let idCounter = 0;
 let previousId;
 let numberOfCars;
-let  = 0
+
 
 $(() => {
 		listenerNextCarClick();
+		listenerPreviousCarClick();
 		getCarCount();
 })
 
@@ -14,33 +13,59 @@ $(() => {
 function listenerNextCarClick () {
     $("#js-next").on('click', function (event) {
 			event.preventDefault();
-			console.log("nextCounter" + " " +  nextCounter);
-			console.log("nextId" + " " + nextId);
-			if (nextId < numberOfCars) {
-				if (nextCounter === 0) {
-						nextId = parseInt($("#js-next").attr("data-id")) + 1;
-						nextCounter++
-				} else {
-					nextId += 1;
-					nextCounter++;
+			if (idCounter < numberOfCars) {
+				if (idCounter === 0){
+					idCounter = parseInt($("#js-next").attr("data-id")) + 1;
 				}
-					$.ajax({
-						method: 'GET',
-						url: `/cars/${nextId}`,
-						dataType: 'json',
-						success: function(response) {
-							console.log(response);
-						}
-					})
+				else {
+					idCounter += 1;
+				}
+				getCarDetails(idCounter);
 			}
 		})
 }
+
+function listenerPreviousCarClick () {
+		$("#js-previous").on('click', function (event) {
+			event.preventDefault();
+			if (idCounter === 0) {
+				previousId = 1;
+			}
+			else if (idCounter > 0) {
+				if (idCounter === 1) {
+					idCounter = 1;
+				} else {
+					idCounter -= 1;
+				}
+			}
+			getCarDetails(idCounter);
+		})
+}
+
+function getCarDetails (idCounter) {
+	$.ajax({
+		method: 'GET',
+		url: `/cars/${idCounter}`,
+		dataType: 'json',
+		success: function(response) {
+			$( "#car-details" ).replaceWith( "<div id='car-details'>" +
+				"<p><strong>" + `${response.name}` + "</strong></p>" +
+				"<p> Top Speed:" + `${response.top_speed}` + "</p>" +
+				"<p> Range Rer Charge (km):" + `${response.range}` + "</p>" +
+				"<p>Charge Time (hrs):" + `${response.charge_time}` + "</p>" +
+				"<p>Price Per Day (USD ):" + `${response.price_per_day}` + "</p>" +
+			"</div>" );
+		}
+	})
+}
+
 
 function getCarCount() {
     $.get('/car_count', function (data) {
          numberOfCars = data;
     });
 	}
+
 
 
 
