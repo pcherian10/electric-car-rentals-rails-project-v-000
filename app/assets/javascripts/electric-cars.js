@@ -1,14 +1,30 @@
-let idCounter = 0;
-let previousId;
+let idCounter = 1;
+let userId;
 let numberOfCars;
 
 
 $(() => {
+		getCarCount();
+		getUserId();
 		listenerNextCarClick();
 		listenerPreviousCarClick();
-		getCarCount();
+		listenerBookNowClick();
 })
 
+function getCarCount() {
+    $.get('/car_count', function (data) {
+         numberOfCars = data;
+    });
+}
+
+function getUserId () {
+	$.ajax({
+		dataType: 'json',
+		method: 'GET'
+	}).done(function(data) {
+		userId = data.id;
+	})
+}
 
 function listenerNextCarClick () {
     $("#js-next").on('click', function (event) {
@@ -51,7 +67,7 @@ function getCarDetails (idCounter) {
 			$( "#car-details" ).replaceWith( "<div id='car-details'>" +
 				"<p><strong>" + `${response.name}` + "</strong></p>" +
 				"<p> Top Speed:" + `${response.top_speed}` + "</p>" +
-				"<p> Range Rer Charge (km):" + `${response.range}` + "</p>" +
+				"<p> Range Rer Charge (km`):" + `${response.range}` + "</p>" +
 				"<p>Charge Time (hrs):" + `${response.charge_time}` + "</p>" +
 				"<p>Price Per Day (USD ):" + `${response.price_per_day}` + "</p>" +
 			"</div>" );
@@ -59,12 +75,28 @@ function getCarDetails (idCounter) {
 	})
 }
 
+function listenerBookNowClick () {
+	$("#book-car").on('click', function (event) {
+		event.preventDefault();
+		newBookingForm();
+		})
+}
 
-function getCarCount() {
-    $.get('/car_count', function (data) {
-         numberOfCars = data;
-    });
-	}
+
+function newBookingForm () {
+	$.ajax({
+		url: `/users/${userId}/bookings/new?car_id=${idCounter}`,
+		method: 'GET',
+		dataType: 'html',
+	}).done(function (response) {
+		$("#book-now").html(response);
+	})
+}
+
+
+
+
+
 
 
 
