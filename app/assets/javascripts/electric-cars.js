@@ -8,7 +8,7 @@ $(() => {
 		getUserId();
 		listenerNextCarClick();
 		listenerPreviousCarClick();
-		listenerBookNowClick();
+		listenerBookThisCarClick();
 })
 
 function getCarCount() {
@@ -75,26 +75,57 @@ function getCarDetails (idCounter) {
 	})
 }
 
-function listenerBookNowClick () {
+function listenerBookThisCarClick () {
 	$("#book-car").on('click', function (event) {
 		event.preventDefault();
 		newBookingForm();
 		})
 }
 
-
 function newBookingForm () {
 	$.ajax({
-		url: `/users/${userId}/bookings/new?car_id=${idCounter}`,
-		method: 'GET',
-		dataType: 'html',
-	}).done(function (response) {
-		$("#book-now").html(response);
+		url: `/ajax_booking?user_id=${userId}&car_id=${idCounter}`,
+		method: 'GET'
+	}).success(function (response) {
+		$("#book-this-car").html(response);
+		listenerCreateBookingClick();
 	})
 }
 
+function listenerCreateBookingClick () {
+	$("#new_booking").on('submit', function(e) {
+		e.preventDefault();
+		let $form = $(this);
+		let action = $form.attr("action");
+		let params = $form.serialize();
+
+		$.ajax({
+			url: action,
+			data: params,
+			dataType: "json",
+			method: "POST"
+		}).success(function(json) {
+			let booking = new Booking (json)
+			let html = booking.createPostHTML();
+		})
+
+	})
+}
+
+class Booking {
+	constructor(obj) {
+		let currentBooking = obj["bookings"].length - 1;
+		this.userName = obj.name
+		this.carName = obj["bookings"][currentBooking]["car"].name
+		this.startDate = obj["bookings"][currentBooking].start_date;
+		this.endDate = obj["bookings"][currentBooking].end_date;
+	}
+}
 
 
+Booking.prototype.createBookingHTML = function () {
+	console.log("")
+}
 
 
 
@@ -145,11 +176,14 @@ function newBookingForm () {
 // });
 //
 // function fetchDogs() {
-//   fetch('https://dog.ceo/api/breeds/image/random') // fetch takes two arguments, a url and an options object. We are GETing from the dog api so we don't need to include the headers. Headers are more important when we want to POST, PUT, DELETE.
+//   fetch('https://dog.ceo/api/breeds/image/random') // fetch takes two arguments, a url and an options object.
+//   We are GETing from the dog api so we don't need to include the headers. Headers are more important when we want to POST, PUT, DELETE.
 //   .then(res => res.json()) // Take our JSON Response from dog api and convert it to a javascript object
 //   .then(data => {  // {status: success, message: 'https://example.jpeg'}
 //     const dog = new Dog(data.message) // Pass just the message value, the image url, to the Dog Class below. dog => Dog {imageURL: 'https://example.jpeg'}
-//     const dogHTML = dog.formatImageHtml() // Call the the Dog Class prototype function we created on our new dog instance. dogHTML => "<img src='https://images.dog.ceo/breeds/cockapoo/bubbles2.jpg'alt='random dog'/>"
+//     const dogHTML = dog.formatImageHtml() //
+//		 Call the the Dog Class prototype function we created on our new dog instance.
+//     dogHTML => "<img src='https://images.dog.ceo/breeds/cockapoo/bubbles2.jpg'alt='random dog'/>"
 //     document.getElementById('dogs').innerHTML = dogHTML // appends our new html to the dogs div
 //   })
 // }

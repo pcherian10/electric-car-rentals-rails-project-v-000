@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'car_count', to: 'cars#car_count'
+  get 'ajax_booking', to: 'bookings#ajax_booking'
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]

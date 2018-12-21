@@ -1,5 +1,3 @@
-<h1>Create a Ajax Booking</h1>
-
 <%=flash[:message]%></br><br>
 
 <%= form_for [@user,@booking] do |f| %>
@@ -12,8 +10,7 @@
   <%= f.date_field :end_date, min: Date.today %><br><br>
 
   <%= f.hidden_field :user_id, :value => @user.id %>
-
-
+  
   <%=f.submit %>
 
 <% end %>

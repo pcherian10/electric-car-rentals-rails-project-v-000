@@ -1,6 +1,9 @@
 class BookingsController < ApplicationController
   def ajax_booking
-    #render partial: "/bookings/ajaxnew" {loca
+      @user = User.find_by_id(params[:user_id])
+      @car = Car.find_by_id(params[:car_id])
+      @booking = Booking.new
+     render partial: "ajaxnew", locals: {user: @user, car: @car}
   end
 
   def index
