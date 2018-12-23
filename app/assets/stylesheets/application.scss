@@ -14,9 +14,18 @@
 
  @import "bootstrap";
 
- .inline {
-    display:inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
- }
+body {
+  background-color: #E0FFFF;
+}
+
+.white-box {
+	background-color: #fff;
+	border-radius: 20px;
+	padding: 40px 15px;
+}
+
+#text {
+	color: #689;
+	font-size: 2em;
+	font-family: Helvetica, Verdana, Arial;
+}

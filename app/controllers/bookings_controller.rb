@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+
   def ajax_booking
       @user = User.find_by_id(params[:user_id])
       @car = Car.find_by_id(params[:car_id])
@@ -40,7 +41,10 @@ class BookingsController < ApplicationController
       elsif @booking.duplicate_booking
         flash[:message] = @booking.return_available_dates
       end
-      redirect_to new_user_booking_path(:user_id => session[:user_id], :car_id => @car.id)
+      respond_to do |f|
+        f.html {redirect_to user_path(@booking.user)}
+        f.json {render :json => @booking.user }
+      end
     end
   end
 

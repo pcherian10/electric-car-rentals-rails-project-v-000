@@ -1,4 +1,5 @@
-<%=flash[:message]%></br><br>
+
+<div class="container white-box">
 
 <%= form_for [@user,@booking] do |f| %>
   <%= f.collection_select :car_id, Car.all, :id, :name, :prompt => true, selected: @car.id %><br><br>
@@ -10,7 +11,9 @@
   <%= f.date_field :end_date, min: Date.today %><br><br>
 
   <%= f.hidden_field :user_id, :value => @user.id %>
-  
+
   <%=f.submit %>
 
 <% end %>
+
+</div>

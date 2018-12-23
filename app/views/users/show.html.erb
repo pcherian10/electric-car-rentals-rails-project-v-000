@@ -1,19 +1,33 @@
-<h2>Welcome!</h2>
-  <h4> Available Cars </h4>
-  <br>
-    <div>
-    <button class="col" data-id="<%= Car.first.id %>" id="js-previous"> Previous Car </button>
-      <div class="col" id="car-details">
-        <p><strong><%= Car.first.name %></strong> </p>
-        <p>Top Speed: <%= Car.first.top_speed %></p>
-        <p>Range Rer Charge (km):<%= Car.first.range%></p>
-        <p>Charge Time (hrs):  <%= Car.first.charge_time %></p>
-        <p>Price Per Day (USD): <%= Car.first.price_per_day %> </p>
-      </div>
-    <button class="col" data-id="<%= Car.first.id %>" id="js-next"> Next Car </button>
+
+    <div id="message">
+      <%=flash[:message]%></br><br>
     </div>
 
-    <br><button class="center" id="book-car">Book This Car!</button>
+    <div class="container">
+      <h4>Welcome to E-Cars Rentals!</h4>
+      <br>
+      <h5> Available Cars </h5>
+      <button class="btn btn-info" data-id="<%= Car.first.id %>" id="js-previous"> Previous Car </button>
+      <button class="btn btn-info" data-id="<%= Car.first.id %>" id="js-next"> Next Car </button><br><br>
+        <div class="white-box" id="car-details">
+            <p><strong><%= Car.first.name %></strong> </p>
+            <p>Top Speed: <%= Car.first.top_speed %></p>
+            <p>Range Rer Charge (km):<%= Car.first.range%></p>
+            <p>Charge Time (hrs):  <%= Car.first.charge_time %></p>
+            <p>Price Per Day (USD): <%= Car.first.price_per_day %> </p>
+        </div>
+    </div>
 
-    <div id="book-this-car">
+    <div class="container">
+      <br><button class="btn btn-success" id="book-car">Book This Car!</button>
+    </div>
+
+    <div class="container"
+      <div id="book-this-car">
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="white-box" id="bookings">
+      </div>
     </div>
