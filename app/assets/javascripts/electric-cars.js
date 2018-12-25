@@ -12,6 +12,7 @@ $(() => {
 		listenerBookThisCarClick();
 		listenerCreateBookingClick();
 		listenerModifyBookingClick();
+
 })
 
 function getUserId() {
@@ -35,7 +36,15 @@ function getUserBookings () {
 		method: 'GET'
 	}).success(function(json) {
 		let html = createUserDetails(json);
-		document.getElementById('bookings').innerHTML = html;
+		if (html == "") {
+			$("#bookings").hide();
+			$("#modify-booking").hide();
+		}
+		else if (!html == "") {
+			$("#bookings").show();
+			$("#modify-booking").show();
+			document.getElementById('bookings').innerHTML = html;
+		}
 	})
 }
 
@@ -107,6 +116,10 @@ function newBookingForm () {
 		url: `/ajax_booking?user_id=${userId}&car_id=${idCounter}`,
 		method: 'GET'
 	}).success(function (response) {
+		console.log(response);
+		$(".modal-title").html("Make a Reservation");
+		$("#book-this-car").show();
+		$("#edit-this-booking").hide();
 		$("#book-this-car").html(response);
 	})
 }
@@ -116,6 +129,9 @@ function editBookingForm () {
 		url: `/ajax_edit_booking?user_id=${userId}&id=${bookingId}`,
 		method: 'GET'
 	}).success(function (response) {
+		$(".modal-title").html("Update Your Reservation");
+		$("#book-this-car").hide();
+		$("#edit-this-booking").show();
 		$("#edit-this-booking").html(response);
 	})
 }
@@ -138,7 +154,7 @@ function listenerCreateBookingClick () {
 }
 
 function listenerEditBookingClick () {
-	$("#edit_booking").on('submit', function(e) {
+	$("edit_booking").on('submit', function(e) {
 		e.preventDefault();
 		let $form = $(this);
 		let action = $form.attr("action");
@@ -160,6 +176,7 @@ function createUserDetails (json) {
 	return html;
 }
 
+
 class UserDetails {
 	constructor(obj) {
 		this.userName = obj.name
@@ -168,12 +185,13 @@ class UserDetails {
 	}
 }
 
+
 UserDetails.prototype.createUserDetailsHTML = function () {
 	const bookings = (
 		this.bookings.map((booking, index) => {
 			return `<p id=${index}>${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</p>`
 		}).join('') )
-		if (bookings.length !== 0) {
+    if (bookings.length !== 0) {
 			return (`<div class="white-box" id="bookings">
 						<strong> Your Current Bookings: </strong>
 						<p>${bookings}</p>
