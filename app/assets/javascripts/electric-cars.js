@@ -6,13 +6,11 @@ let numberOfCars;
 $(() => {
 		getCarCount();
 		getUserId();
-		getUserBookings();
 		listenerNextCarClick();
 		listenerPreviousCarClick();
 		listenerBookThisCarClick();
 		listenerCreateBookingClick();
-		listenerModifyBookingClick();
-
+		listenerViewEditBookings();
 })
 
 function getUserId() {
@@ -28,24 +26,6 @@ function getCarCount() {
     $.get('/car_count', function (data) {
          numberOfCars = data;
     });
-}
-
-function getUserBookings () {
-	$.ajax({
-		dataType: 'json',
-		method: 'GET'
-	}).success(function(json) {
-		let html = createUserDetails(json);
-		if (html == "") {
-			$("#bookings").hide();
-			$("#modify-booking").hide();
-		}
-		else if (!html == "") {
-			$("#bookings").show();
-			$("#modify-booking").show();
-			document.getElementById('bookings').innerHTML = html;
-		}
-	})
 }
 
 function listenerNextCarClick () {
@@ -104,12 +84,39 @@ function listenerBookThisCarClick () {
 		})
 }
 
+
+function listenerViewEditBookings () {
+	$("#view-edit-bookings").on('click', function(event) {
+		event.preventDefault();
+		getUserBookings();
+	})
+}
+
+
 function listenerModifyBookingClick () {
 	$("#modify-booking").on('click', function (event) {
 		event.preventDefault();
 		editBookingForm();
 		})
 }
+
+function getUserBookings () {
+	$.ajax({
+		dataType: 'json',
+		method: 'GET'
+	}).success(function(json) {
+		let html = createUserDetails(json);
+		debugger;
+		if (html == "") {
+			document.getElementById('bookings').innerHTML = "<p>You do not have any bookings yet!</p>";
+		}
+		else if (!html == "") {
+			document.getElementById('bookings').innerHTML = html;
+		}
+		listenerModifyBookingClick();
+	})
+}
+
 
 function newBookingForm () {
 	$.ajax({
@@ -185,17 +192,21 @@ class UserDetails {
 	}
 }
 
-
 UserDetails.prototype.createUserDetailsHTML = function () {
 	const bookings = (
 		this.bookings.map((booking, index) => {
-			return `<p id=${index}>${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</p>`
+			return `<input type='radio' id=${index} name='booking' value=${booking["car"].name}>
+							<label for=${index}> ${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</label><br>`
 		}).join('') )
     if (bookings.length !== 0) {
-			return (`<div class="white-box" id="bookings">
-						<strong> Your Current Bookings: </strong>
+			return (`<div class="white-box">
+						<strong> Your Current Bookings: </strong><br><br>
 						<p>${bookings}</p>
-			</div>`)
+						<div class="container">
+					    <br><button class="btn btn-success" id="modify-booking" data-toggle="modal" data-target="#myModal">Modify</button>
+					  </div>
+						</div>
+						`)
 		}
 		else {
 			return ("")
