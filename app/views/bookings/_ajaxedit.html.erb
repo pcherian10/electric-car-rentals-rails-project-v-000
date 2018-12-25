@@ -19,3 +19,6 @@
     <% end %>
 
 </div>
+
+<%= link_to 'Delete', user_booking_path(@user, @booking),
+          data: {:confirm => 'Are you sure?'}, :method => :delete %>

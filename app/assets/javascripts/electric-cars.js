@@ -1,5 +1,5 @@
 let idCounter = 1;
-let userId, bookingId = 1;
+let userId, bookingId;
 let numberOfCars;
 
 
@@ -96,6 +96,8 @@ function listenerViewEditBookings () {
 function listenerModifyBookingClick () {
 	$("#modify-booking").on('click', function (event) {
 		event.preventDefault();
+	  bookingId =	$("input[name='booking']:checked").val();
+		bookingId = parseInt(bookingId, 10) + 1;
 		editBookingForm();
 		})
 }
@@ -106,7 +108,6 @@ function getUserBookings () {
 		method: 'GET'
 	}).success(function(json) {
 		let html = createUserDetails(json);
-		debugger;
 		if (html == "") {
 			document.getElementById('bookings').innerHTML = "<p>You do not have any bookings yet!</p>";
 		}
@@ -123,7 +124,6 @@ function newBookingForm () {
 		url: `/ajax_booking?user_id=${userId}&car_id=${idCounter}`,
 		method: 'GET'
 	}).success(function (response) {
-		console.log(response);
 		$(".modal-title").html("Make a Reservation");
 		$("#book-this-car").show();
 		$("#edit-this-booking").hide();
@@ -172,6 +172,7 @@ function listenerEditBookingClick () {
 			dataType: "json",
 			method: "PATCH"
 		}).success(function(json) {
+			 debugger;
 			 getUserBookings(json);
 		})
 	})
@@ -195,7 +196,7 @@ class UserDetails {
 UserDetails.prototype.createUserDetailsHTML = function () {
 	const bookings = (
 		this.bookings.map((booking, index) => {
-			return `<input type='radio' id=${index} name='booking' value=${booking["car"].name}>
+			return `<input type='radio' id=${index} name='booking' value=${index}>
 							<label for=${index}> ${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</label><br>`
 		}).join('') )
     if (bookings.length !== 0) {
