@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
       @user = User.find_by_id(params[:user_id])
       @car = Car.find_by_id(params[:car_id])
       @booking = Booking.new
-     render partial: "ajaxnew", locals: {user: @user, car: @car}
+      render partial: "ajaxnew", locals: {user: @user, car: @car}
   end
 
   def index
@@ -58,7 +58,10 @@ class BookingsController < ApplicationController
     @booking.assign_attributes(booking_params)
     if @booking.valid_date && @booking.duplicate_booking != true
         @booking.save(booking_params)
-        redirect_to user_path(@booking.user)
+        respond_to do |f|
+          f.html {redirect_to user_path(@booking.user)}
+          f.json {render :json => @booking.user}
+        end
     else
       if !@booking.valid_date
         flash[:message] = "Check your dates and try again!"

@@ -120,6 +120,7 @@ function listenerCreateBookingClick () {
 	})
 }
 
+
 function createUserDetails (json) {
 	let userDetails = new UserDetails (json)
 	let html = userDetails.createUserDetailsHTML();
