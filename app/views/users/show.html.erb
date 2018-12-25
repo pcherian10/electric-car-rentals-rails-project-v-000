@@ -1,4 +1,6 @@
 
+      <%=flash[:message]%>
+
     <div class="container">
       <h4>Welcome to E-Cars Rentals!</h4>
       <br>
@@ -15,7 +17,7 @@
     </div>
 
     <div class="container">
-      <%=flash[:message]%>
+
       <br><button class="btn btn-success" id="book-car" data-toggle="modal" data-target="#myModal">Book This Car!</button>
     </div>
 
@@ -28,7 +30,9 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-              <div id ="book-this-car">
+              <div id="book-this-car">
+              </div>
+              <div id="edit-this-booking">
               </div>
             </div>
             <div class="modal-footer">
@@ -41,10 +45,12 @@
     </div>
   </div>
 
+
   <div class="container">
       <br>
     <div class="white-box">
       <div class="white-box" id="bookings">
       </div>
     </div>
+    <br><button class="btn btn-success" id="modify-booking" data-toggle="modal" data-target="#myModal">Modify Bookings</button>
   </div>

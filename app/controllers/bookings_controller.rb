@@ -7,6 +7,12 @@ class BookingsController < ApplicationController
       render partial: "ajaxnew", locals: {user: @user, car: @car}
   end
 
+  def ajax_edit_booking
+      @user = User.find_by_id(params[:user_id])
+      @booking = Booking.find_by_id(params[:id])
+      render partial: "ajaxedit", locals: {booking: @booking}
+  end
+
   def index
     @bookings = Booking.all
     respond_to do |f|
@@ -68,7 +74,10 @@ class BookingsController < ApplicationController
       elsif @booking.duplicate_booking
         flash[:message] = @booking.return_available_dates
       end
-      redirect_to edit_user_booking_path
+      respond_to do |f|
+        f.html {redirect_to user_path(@booking.user)}
+        f.json {render :json => @booking.user}
+      end
     end
   end
 

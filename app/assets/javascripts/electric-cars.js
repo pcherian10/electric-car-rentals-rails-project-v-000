@@ -1,5 +1,5 @@
 let idCounter = 1;
-let userId;
+let userId, bookingId = 1;
 let numberOfCars;
 
 
@@ -11,6 +11,7 @@ $(() => {
 		listenerPreviousCarClick();
 		listenerBookThisCarClick();
 		listenerCreateBookingClick();
+		listenerModifyBookingClick();
 })
 
 function getUserId() {
@@ -94,12 +95,28 @@ function listenerBookThisCarClick () {
 		})
 }
 
+function listenerModifyBookingClick () {
+	$("#modify-booking").on('click', function (event) {
+		event.preventDefault();
+		editBookingForm();
+		})
+}
+
 function newBookingForm () {
 	$.ajax({
 		url: `/ajax_booking?user_id=${userId}&car_id=${idCounter}`,
 		method: 'GET'
 	}).success(function (response) {
 		$("#book-this-car").html(response);
+	})
+}
+
+function editBookingForm () {
+	$.ajax({
+		url: `/ajax_edit_booking?user_id=${userId}&id=${bookingId}`,
+		method: 'GET'
+	}).success(function (response) {
+		$("#edit-this-booking").html(response);
 	})
 }
 
@@ -120,6 +137,22 @@ function listenerCreateBookingClick () {
 	})
 }
 
+function listenerEditBookingClick () {
+	$("#edit_booking").on('submit', function(e) {
+		e.preventDefault();
+		let $form = $(this);
+		let action = $form.attr("action");
+		let params = $form.serialize();
+		$.ajax({
+			url: action,
+			data: params,
+			dataType: "json",
+			method: "PATCH"
+		}).success(function(json) {
+			 getUserBookings(json);
+		})
+	})
+}
 
 function createUserDetails (json) {
 	let userDetails = new UserDetails (json)
