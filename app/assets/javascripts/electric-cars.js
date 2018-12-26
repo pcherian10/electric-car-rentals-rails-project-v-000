@@ -97,7 +97,7 @@ function listenerModifyBookingClick () {
 	$("#modify-booking").on('click', function (event) {
 		event.preventDefault();
 	  bookingId =	$("input[name='booking']:checked").val();
-		bookingId = parseInt(bookingId, 10) + 1;
+		bookingId = parseInt(bookingId, 10);
 		editBookingForm();
 		})
 }
@@ -172,7 +172,6 @@ function listenerEditBookingClick () {
 			dataType: "json",
 			method: "PATCH"
 		}).success(function(json) {
-			 debugger;
 			 getUserBookings(json);
 		})
 	})
@@ -196,8 +195,8 @@ class UserDetails {
 UserDetails.prototype.createUserDetailsHTML = function () {
 	const bookings = (
 		this.bookings.map((booking, index) => {
-			return `<input type='radio' id=${index} name='booking' value=${index}>
-							<label for=${index}> ${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</label><br>`
+			return `<input type='radio' id='${booking.id}' name='booking' value=${booking.id}>
+							<label for=${booking.id}> ${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</label><br>`
 		}).join('') )
     if (bookings.length !== 0) {
 			return (`<div class="white-box">

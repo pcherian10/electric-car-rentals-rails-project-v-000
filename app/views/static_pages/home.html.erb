@@ -1,19 +1,8 @@
-<div class="theme-showcase" role="main">
 
-  <div class="left-pic">
-    <img src="https://fortunedotcom.files.wordpress.com/2016/05/tes-06-01-16-tesla-model-x-5.jpg" width="550" height="325">
-  </div>
-
-  <div class = "right-info">
-    <h1>E-Car Rental Service!</h1>
-    <div class="left">
-      <% else %>
-      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %><br><br>
-      <p> or </p>
-      <%= link_to "Sign in via username", "signin" %><br>
-      <%= link_to "Sign Up", new_user_path, class: "btn btn-primary" %>
-    </div>
-  </div>
-
-
+<h1>E-Car Rental Service!</h1>
+<div>
+  <%= link_to "<b>Sign in with Google</b>".html_safe, "/auth/google_oauth2", id: "sign_in"  %><br><br>
+  <p> or </p>
+  <%= link_to "<b>Sign in via username</b>".html_safe, 'signin'  %><br>
+  <%= link_to "<b>Sign Up</b>".html_safe, new_user_path %>
 </div>
