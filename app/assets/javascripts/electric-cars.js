@@ -105,8 +105,9 @@ function listenerModifyBookingClick () {
 function getUserBookings () {
 	$.ajax({
 		dataType: 'json',
-		method: 'GET'
+		method: 'GET',
 	}).success(function(json) {
+		console.log(json)
 		let html = createUserDetails(json);
 		if (html == "") {
 			document.getElementById('bookings').innerHTML = "<p>You do not have any bookings yet!</p>";
@@ -192,19 +193,29 @@ class UserDetails {
 	}
 }
 
+function compareRatings(a,b) {
+	if (a.rating < b.rating)
+		 return -1;
+	if (a.rating > b.rating)
+		return 1;
+	return 0;
+}
+
 UserDetails.prototype.createUserDetailsHTML = function () {
+	this.bookings.sort(compareRatings)
 	const bookings = (
 		this.bookings.map((booking, index) => {
 			return `<input type='radio' id='${booking.id}' name='booking' value=${booking.id}>
-							<label for=${booking.id}> ${booking["car"].name} from ${booking.start_date} to ${booking.end_date}</label><br>`
+							<label for=${booking.id}> ${booking["car"].name} from ${booking.start_date} to ${booking.end_date} - Rating ${booking.rating}</label><br>`
 		}).join('') )
+
     if (bookings.length !== 0) {
 			return (`<div class="white-box">
 						<strong> Your Current Bookings: </strong><br><br>
 						<p>${bookings}</p>
-						<div class="container">
-					    <br><button class="btn btn-success" id="modify-booking" data-toggle="modal" data-target="#myModal">Modify</button>
-					  </div>
+							<div class="container">
+						    <br><button class="btn btn-success" id="modify-booking" data-toggle="modal" data-target="#myModal">Modify</button>
+						  </div>
 						</div>
 						`)
 		}
