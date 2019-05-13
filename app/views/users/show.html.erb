@@ -1,6 +1,4 @@
 
-
-
     <%=flash[:message]%>
 
     <div class="container">
@@ -12,7 +10,7 @@
         <div class="white-box" id="car-details">
             <p><strong><%= Car.first.name %></strong> </p>
             <p>Top Speed: <%= Car.first.top_speed %></p>
-            <p>Range Rer Charge (km):<%= Car.first.range%></p>
+            <p>Range Per Charge (km):<%= Car.first.range%></p>
             <p>Charge Time (hrs):  <%= Car.first.charge_time %></p>
             <p>Price Per Day (USD): <%= Car.first.price_per_day %> </p>
         </div>
